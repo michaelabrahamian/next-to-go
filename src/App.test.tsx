@@ -1,10 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { App } from './App';
 
-test('renders learn react link', () => {
+test('displays the correct static text', () => {
   render(<App />);
 
-  const linkElement = screen.getByText(/learn react/i);
+  const linkElement = screen.getByText(/it is currently/i);
 
   expect(linkElement).toBeInTheDocument();
 });
