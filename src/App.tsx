@@ -1,15 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
+import { NextToGo } from './NextToGo';
 
-export const App = (): JSX.Element => {
-  const currentTimestamp = new Date().toLocaleString('en-AU');
-
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>It is currently {currentTimestamp}</p>
-      </header>
-    </div>
-  );
-};
+export const App = (): JSX.Element => (
+  <div className="App">
+    <header className="App-header">
+      <h1>Races</h1>
+      <NextToGo />
+    </header>
+  </div>
+);

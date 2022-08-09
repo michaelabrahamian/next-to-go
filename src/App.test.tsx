@@ -4,7 +4,7 @@ import { App } from './App';
 test('displays the correct static text', () => {
   render(<App />);
 
-  const linkElement = screen.getByText(/it is currently/i);
+  const linkElement = screen.getByText(/Races/i);
 
   expect(linkElement).toBeInTheDocument();
 });
