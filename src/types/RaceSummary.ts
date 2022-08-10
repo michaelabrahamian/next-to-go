@@ -17,4 +17,5 @@ export type RaceSummary = {
   raceID: string;
   meetingName: string;
   raceNumber: number;
+  startTime: Date;
 };

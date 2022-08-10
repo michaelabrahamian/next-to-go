@@ -2,16 +2,20 @@ import { render, screen } from '../../testUtils';
 import { RaceSummary } from '../../types/RaceSummary';
 import { RaceList } from './RaceList';
 
+const mockDate = new Date();
+
 const mockRaces: RaceSummary[] = [
   {
     raceID: '1',
     raceNumber: 1,
     meetingName: 'TEST_MEETING_NAME_1',
+    startTime: mockDate,
   },
   {
     raceID: '2',
     raceNumber: 2,
     meetingName: 'TEST_MEETING_NAME_2',
+    startTime: mockDate,
   },
 ];
 
@@ -29,6 +33,7 @@ describe('Race', () => {
         raceID: '',
         raceNumber: 1,
         meetingName: 'TEST',
+        startTime: mockDate,
       },
     ];
     render(<RaceList races={races} />);

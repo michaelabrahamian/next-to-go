@@ -7,6 +7,8 @@ export const buildNextToGoRaceSummaries = (
 ): RaceSummary[] => {
   const nextToGoRaceSummaries: RaceSummary[] = [];
 
+  console.log('raceSummaries', raceSummaries);
+
   nextToGoIDs.forEach((nextToGoID) => {
     const raceSummary = raceSummaries[nextToGoID];
 
@@ -14,6 +16,8 @@ export const buildNextToGoRaceSummaries = (
       nextToGoRaceSummaries.push(formatRaceSummaryResponse(raceSummary));
     }
   });
+
+  console.log('nextToGoRaceSummaries', nextToGoRaceSummaries);
 
   return nextToGoRaceSummaries;
 };

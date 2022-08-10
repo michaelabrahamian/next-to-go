@@ -6,6 +6,7 @@ const mockRace: RaceSummary = {
   raceID: '1',
   raceNumber: 2,
   meetingName: 'TEST_MEETING_NAME',
+  startTime: new Date(),
 };
 
 describe('Race', () => {
