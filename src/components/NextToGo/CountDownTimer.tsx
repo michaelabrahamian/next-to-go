@@ -5,16 +5,19 @@ type CountDownTimerProps = {
   targetDate: Date;
 };
 
+const getCountdownText = (targetDate: Date): string =>
+  formatDistanceToNowStrict(targetDate, {
+    addSuffix: true,
+  });
+
 export const CountDownTimer = ({
   targetDate,
 }: CountDownTimerProps): JSX.Element => {
-  const [countDown, setCountdown] = useState(
-    formatDistanceToNowStrict(targetDate)
-  );
+  const [countDown, setCountdown] = useState(getCountdownText(targetDate));
 
   useEffect(() => {
     const countdownInterval = setInterval(() => {
-      setCountdown(formatDistanceToNowStrict(targetDate));
+      setCountdown(getCountdownText(targetDate));
     }, 1_000);
 
     return () => clearInterval(countdownInterval);
@@ -22,5 +25,5 @@ export const CountDownTimer = ({
 
   console.log('targetDate', targetDate);
 
-  return <span>starts in: {countDown}</span>;
+  return <span>starts: {countDown}</span>;
 };
