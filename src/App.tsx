@@ -1,5 +1,5 @@
 import './App.css';
-import { NextToGo } from './NextToGo';
+import { NextToGo } from './components/NextToGo';
 
 export const App = (): JSX.Element => (
   <div className="App">

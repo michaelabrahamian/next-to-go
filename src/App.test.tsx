@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { screen, render } from './testUtils';
 import { App } from './App';
 
 test('displays the correct static text', () => {
