@@ -21,7 +21,7 @@ export const buildNextToGoRaceSummaries = (
     }
   });
 
-  return sortByStartTimeAscending(nextToGoRaceSummaries);
+  return sortByStartTimeAscending(nextToGoRaceSummaries).slice(0, 5);
 };
 
 export const sortByStartTimeAscending = (
