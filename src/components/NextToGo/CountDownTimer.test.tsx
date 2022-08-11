@@ -1,4 +1,6 @@
-import { getCountdownText } from './CountDownTimer';
+import { act } from '@testing-library/react';
+import { render, screen } from '../../testUtils';
+import { CountDownTimer, getCountdownText } from './CountDownTimer';
 
 const mockCurrentTimestamp = new Date('2022-01-01T01:00:00');
 
@@ -35,5 +37,37 @@ describe('getCountdownText', () => {
     const fourMinutesAgo = new Date('2022-01-01T00:55:52');
 
     expect(getCountdownText(fourMinutesAgo)).toEqual('4 minutes ago');
+  });
+});
+
+describe('CountDownTimer', () => {
+  test('should display the time until the race for a target time more than a minute in the future', () => {
+    const fiveMinutesInTheFuture = new Date('2022-01-01T01:05:00');
+
+    render(<CountDownTimer targetDate={fiveMinutesInTheFuture} />);
+
+    expect(screen.getByText(/starts: in 5 minutes/i)).toBeInTheDocument();
+  });
+
+  test('should display the time until the race for a target time less than a minute in the future', () => {
+    const twentyNineSecondsInTheFuture = new Date('2022-01-01T01:00:29');
+
+    render(<CountDownTimer targetDate={twentyNineSecondsInTheFuture} />);
+
+    expect(screen.getByText(/starts: in 29 seconds/i)).toBeInTheDocument();
+  });
+
+  test('should count down the time after a second passes', () => {
+    const twentyNineSecondsInTheFuture = new Date('2022-01-01T01:00:29');
+
+    render(<CountDownTimer targetDate={twentyNineSecondsInTheFuture} />);
+
+    expect(screen.getByText(/starts: in 29 seconds/i)).toBeInTheDocument();
+
+    act(() => {
+      jest.advanceTimersByTime(1_000);
+    });
+
+    expect(screen.getByText(/starts: in 28 seconds/i)).toBeInTheDocument();
   });
 });
