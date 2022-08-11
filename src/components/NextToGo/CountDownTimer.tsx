@@ -5,7 +5,7 @@ type CountDownTimerProps = {
   targetDate: Date;
 };
 
-const getCountdownText = (targetDate: Date): string =>
+export const getCountdownText = (targetDate: Date): string =>
   formatDistanceToNowStrict(targetDate, {
     addSuffix: true,
   });
@@ -22,8 +22,6 @@ export const CountDownTimer = ({
 
     return () => clearInterval(countdownInterval);
   }, [targetDate]);
-
-  console.log('targetDate', targetDate);
 
   return <span>starts: {countDown}</span>;
 };
