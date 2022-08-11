@@ -13,6 +13,6 @@ describe('Race', () => {
   test('should display the correct race label', () => {
     render(<Race race={mockRace} />);
 
-    expect(screen.getByText('TEST_MEETING_NAME, 2')).toBeInTheDocument();
+    expect(screen.getByText('TEST_MEETING_NAME race 2')).toBeInTheDocument();
   });
 });

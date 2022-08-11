@@ -1,4 +1,4 @@
-import { RaceSummaryResponse } from '../../types/RaceSummary';
+import { RaceSummary, RaceSummaryResponse } from '../../types/RaceSummary';
 import { formatRaceSummaryResponse } from './formatRaceSummaryResponse';
 
 test('should return the correct payload', () => {
@@ -16,9 +16,14 @@ test('should return the correct payload', () => {
     venue_state: 'TEST_VENUE_STATE',
   };
 
-  expect(formatRaceSummaryResponse(mockRaceSummaryResponse)).toEqual({
+  const expectedRaceSummary: RaceSummary = {
     meetingName: 'TEST_MEETING_NAME',
     raceID: 'TEST_RACE_ID',
     raceNumber: 1,
-  });
+    startTime: new Date(1000),
+  };
+
+  expect(formatRaceSummaryResponse(mockRaceSummaryResponse)).toEqual(
+    expectedRaceSummary
+  );
 });
