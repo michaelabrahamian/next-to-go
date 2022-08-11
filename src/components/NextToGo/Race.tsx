@@ -1,3 +1,4 @@
+import { ListItem, ListItemText } from '@mui/material';
 import { RaceSummary } from '../../types/RaceSummary';
 import { CountDownTimer } from './CountDownTimer';
 
@@ -6,8 +7,10 @@ type RaceProps = {
 };
 
 export const Race = ({ race }: RaceProps): JSX.Element => (
-  <li>
-    {race.meetingName}, race {race.raceNumber}{' '}
-    <CountDownTimer targetDate={race.startTime} />
-  </li>
+  <ListItem>
+    <ListItemText
+      primary={`${race.meetingName} race ${race.raceNumber}`}
+      secondary={<CountDownTimer targetDate={race.startTime} />}
+    />
+  </ListItem>
 );
