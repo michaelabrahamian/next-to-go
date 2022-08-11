@@ -8,10 +8,15 @@ export const buildNextToGoRaceSummaries = (
 ): RaceSummary[] => {
   const nextToGoRaceSummaries: RaceSummary[] = [];
 
+  const oneMinuteAgo_MS = Date.now() - 60 * 1_000;
+
   nextToGoIDs.forEach((nextToGoID) => {
     const raceSummary = raceSummaries[nextToGoID];
 
-    if (raceSummary) {
+    const isRaceStartTimeAfterOneMinuteAgo =
+      raceSummary?.advertised_start.seconds * 1_000 - oneMinuteAgo_MS > 0;
+
+    if (isRaceStartTimeAfterOneMinuteAgo) {
       nextToGoRaceSummaries.push(formatRaceSummaryResponse(raceSummary));
     }
   });

@@ -137,6 +137,10 @@ describe('buildNextToGoRaceSummaries', () => {
       buildNextToGoRaceSummaries(mockNextToGoIDs, mockRaceSummaries)
     ).toEqual([]);
   });
+
+  test.todo(
+    'should only include races with start dates past one minute in the past'
+  );
 });
 
 describe('sortByStartTimeAscending', () => {
