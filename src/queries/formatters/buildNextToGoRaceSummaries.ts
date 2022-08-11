@@ -8,8 +8,6 @@ export const buildNextToGoRaceSummaries = (
 ): RaceSummary[] => {
   const nextToGoRaceSummaries: RaceSummary[] = [];
 
-  console.log('raceSummaries', raceSummaries);
-
   nextToGoIDs.forEach((nextToGoID) => {
     const raceSummary = raceSummaries[nextToGoID];
 
@@ -18,9 +16,12 @@ export const buildNextToGoRaceSummaries = (
     }
   });
 
-  console.log('nextToGoRaceSummaries', nextToGoRaceSummaries);
+  return sortByStartTimeAscending(nextToGoRaceSummaries);
+};
 
-  return nextToGoRaceSummaries.sort((raceA, raceB) =>
+export const sortByStartTimeAscending = (
+  raceSummaryList: RaceSummary[]
+): RaceSummary[] =>
+  [...raceSummaryList].sort((raceA, raceB) =>
     compareAsc(raceA.startTime, raceB.startTime)
   );
-};
